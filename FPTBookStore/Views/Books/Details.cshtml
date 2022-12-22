@@ -1,0 +1,86 @@
+﻿@model FPTBookStore.Models.Book
+
+@{ ViewBag.Title = "Details"; }
+
+<div class="row top-gap">
+    <div class="col-md-4 img-container">
+        <img src="~/Content/Images/Books/@Html.DisplayFor(model => model.CoverUrl)" , 
+             alt="@Html.DisplayFor(model => model.Name)'s Cover" class="big-cover" />
+    </div>
+
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Author)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockedQuantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockedQuantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDateTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDateTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedDateTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedDateTime)
+            </dd>
+
+            <dd class="top-gap">
+                @if (User.IsInRole("Store Owner"))
+                {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })}
+            </dd>
+        </dl>
+    </div>
+</div>

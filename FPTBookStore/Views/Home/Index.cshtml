@@ -1,0 +1,39 @@
+﻿@model ICollection<FPTBookStore.Models.Book>
+
+@{ ViewBag.Title = "Home Page"; }
+
+<div class="search-bar">
+    <form method="get">
+        <div class="input-group">
+            <input type="text" class="form-control" 
+                   name="search" placeholder="Search Book here..." value="@ViewBag.Search">
+            <div class="input-group-btn">
+                <input class="btn btn-warning" type="submit" value="Search">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="row equal">
+    @foreach (var book in Model)
+    {
+<div class="col-sm-6 col-md-4 col-lg-3 boxcover">
+    <div class="thumbnail">
+        <a href="@Url.Action("Details", "Books", new { id = book.Id })"><img src="~/Content/Images/Books/@book.CoverUrl" 
+                                                                             alt="@book.Name's cover"></a>
+        <div class="caption">
+            <a href="@Url.Action("Details", "Books", new { id = book.Id })" role="button">@book.Name</a>
+            <p>
+                @if (book.Description.Length > 100)
+                {
+@book.Description.Substring(0, 100)@:...
+}
+else
+{
+@book.Description}
+            </p>
+        </div>
+    </div>
+</div>}
+</div>
